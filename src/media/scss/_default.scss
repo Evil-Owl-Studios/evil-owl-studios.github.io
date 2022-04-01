@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Staatliches&display=swap');
+
+*{
+    &:not(div.fancy-heading span){
+        font-family: 'Poppins', sans-serif;
+    }
+}
+
+h1, h2, h3, h4, h5{
+    font-family: 'Staatliches', cursive;
+}

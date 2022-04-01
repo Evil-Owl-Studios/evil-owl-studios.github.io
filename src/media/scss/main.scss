@@ -1,0 +1,8 @@
+@use 'default';
+
+div.fancy-heading{
+    font-family: 'Staatliches', cursive !important;
+    & span{
+        font-family: inherit !important;
+    }
+}
