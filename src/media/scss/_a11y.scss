@@ -1,0 +1,14 @@
+$a11y-yellow: #f2f200;
+$a11y-blue: #0004ff;
+
+input{
+    &:active, &:hover, &:focus{
+        outline: 1px solid $a11y-blue;
+    }
+}
+
+// a{
+//     &:active, &:hover, &:focus{
+//         outline: 2px solid $a11y-yellow;
+//     }
+// }

@@ -1,0 +1,85 @@
+&{
+    background-color: $bg-light;
+    & > * {
+        color: $fg-light;
+    }
+    div.nav{
+        background-color: $nav-bg-light;
+        & div.nav-col{
+            & nav{
+                &.main{
+                    & ul{
+                        & li{
+                            & > a{
+                                color: $fg-light;
+                            }
+                        }
+                    }
+                }
+            }
+            &:nth-child(even){
+                background-color: $nav-accent-even-light;
+            }
+            &:nth-child(odd){
+                background-color: $nav-accent-odd-light;
+            }
+        }
+    }
+    div.nav-toggle{
+        & input#nav-toggle{
+            & + label{
+                background-color: $bg-dark;
+                box-shadow: 1px 1px 1px 0px transparentize($bg-dark, 0.5%);
+                
+                & > div.hamburger{
+                    & span{
+                        background-color: $bg-light;
+                    }
+                }
+            }
+            &:checked{
+                & + label{    
+                    background-color: $bg-light;
+                    box-shadow: 1px 1px 1px 0px transparentize($bg-light, 0.5%);
+
+                    & > div.hamburger{
+                        & span{
+                            background-color: $bg-dark;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    & a[href]{
+        color: $fg-light;
+        text-decoration: underline;
+        &[target="_blank"]{
+            &::after{
+                background-image: url('../images/ico_tab.dark.svg');
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                background-position: center top;
+            }
+        }
+    }
+    div.scroller{
+        & div.scroller-icon{
+            & svg{
+                & line{
+                    stroke: $fg-light;
+                }
+            }
+        }
+    }
+
+    div.scrollbar-thumb{
+        background-color: $fg-light;
+    }
+
+    div.carrousel{
+        &::before{
+            box-shadow: inset 0px 10px 3px -5px $bg-light, inset 0px -10px 3px -5px $bg-light;
+        }
+    }
+}

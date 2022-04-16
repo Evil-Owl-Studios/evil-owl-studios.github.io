@@ -1,0 +1,39 @@
+@use '../variables' as *;
+
+@keyframes scroll-flash {
+    0%{
+        transform: translateY(10px);
+    }
+    10%{
+        transform: translateY(20px);
+    }
+    30%{
+        transform: translateY(10px);
+    }
+    100%{
+        transform: translateY(10px);
+    }
+}
+
+div.scroller{
+    display: block;
+    padding: 2px;
+    box-sizing: border-box;
+
+    animation: scroll-flash 2s ease-in-out 4s infinite;
+    
+    & div.scroller-icon{
+        width: 75px;
+        height: 75px;
+        margin-bottom: 10px;
+        & svg{
+            & line{
+                fill: none;
+                stroke: $fg-dark;
+                stroke-linecap:round;
+                stroke-linejoin:round;
+                stroke-width:2px;
+            }
+        }
+    }
+}

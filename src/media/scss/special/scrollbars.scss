@@ -1,0 +1,16 @@
+@use '../variables' as *;
+
+div.scrollbar-track{
+    width: 10px;
+    height: 100%;
+}
+
+div.scrollbar-thumb{
+    background-color: $fg-dark;
+}
+
+div.scrollbar-view{
+    padding-left: 10px;
+    padding-right: 10px;
+    scroll-snap-type: y mandatory;
+}
