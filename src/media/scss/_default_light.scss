@@ -82,4 +82,61 @@
             box-shadow: inset 0px 10px 3px -5px $bg-light, inset 0px -10px 3px -5px $bg-light;
         }
     }
+
+    div.calendar{
+        background-color: $bg-light;
+        color: $fg-light;
+
+        & div.calendar-head{
+            & span{
+                &.calendar-month{
+                    & select{
+                        background-color: darken($bg-light, 10%);
+                        color: $fg-light;
+                        border: 1px solid $bg-light;
+                    }
+                }
+                &.calendar-year{
+                    & input[type="text"]{
+                        background-color: darken($bg-light, 10%);
+                        color: $fg-light;
+                        border: 1px solid $bg-light;
+                    }
+                }
+                &.calendar-reset{
+                    & button{
+                        background-color: darken($bg-light, 10%);
+                        color: $fg-light;
+                        border: 1px solid $bg-light;
+                    }
+                }
+            }
+        }
+
+        & div.calendar-body{
+
+            & div.calendar-weekdays{
+                & span.wd{
+                    background-color: darken($bg-light, 10%);
+                    &.wd-weekend{
+                        background-color: darken($bg-light, 15%);
+                    }
+                }
+            }
+        
+            & div.calendar-dates{
+                & span.date{
+                    background-color: darken($bg-light, 5%);
+                    &.date-weekend{
+                        background-color: darken($bg-light, 10%);
+                    }
+                    &.date-today{
+                        border-color: $cal-hh-today-light;
+                    }
+                }
+            }
+        }
+    }
+
+
 }

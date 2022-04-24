@@ -1,5 +1,4 @@
-$a11y-yellow: #f2f200;
-$a11y-blue: #0004ff;
+@use './variables' as *;
 
 input{
     &:active, &:hover, &:focus{

@@ -3,6 +3,9 @@ $bg-dark: #121212;
 $bg-light: #e7e7e7;
 $fg-dark: #f3f3f3;
 $fg-light: #232323;
+// a11y
+$a11y-yellow: #f2f200;
+$a11y-blue: #0004ff;
 // Nav
 $nav-bg-dark: #252525;
 $nav-bg-light: #b0b0b0;
@@ -10,3 +13,11 @@ $nav-accent-even-dark: #C79522;
 $nav-accent-even-light: #C79522;
 $nav-accent-odd-dark: #E1AA26;
 $nav-accent-odd-light: #E1AA26;
+
+// Calendar
+$cal-hh-today-dark: #202472;
+$cal-hh-today-light: #949be9;
+$cal-hh-ev-pin-dark: #118231;
+$cal-hh-ev-pin-light: #56d574;
+
+$delay-light-toggle: 0.25s;

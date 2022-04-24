@@ -3,10 +3,12 @@
 *{
     font-family: 'Poppins', sans-serif;
 
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+    &:not(:where(input, textarea)){
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
 }
 
 h1, h2, h3, h4, h5{
@@ -208,9 +210,9 @@ body{
     box-sizing: border-box;
 
     &, & * {
-        transition: color 0.25s, background-color 0.25s, box-shadow 0.25s;
+        transition: color $delay-light-toggle, background-color $delay-light-toggle, box-shadow $delay-light-toggle;
         &::after, &::before{
-            transition: color 0.25s, background-color 0.25s, box-shadow 0.25s;
+            transition: color $delay-light-toggle, background-color $delay-light-toggle, box-shadow $delay-light-toggle;
         }
     }
 

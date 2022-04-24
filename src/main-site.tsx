@@ -2,7 +2,13 @@ import React from 'react';
 import NavToggle from './components/special/nav-toggle';
 import Navigation from './components/navigation';
 import PageHolder from './components/page-holder';
-import Page, { PageAbout, PageContact, PageHome, PageProjects } from './pages/default-pages';
+import Page from './pages/default-pages';
+
+import { PageHome } from './pages/page-home';
+import { PageAbout } from './pages/page-about';
+import { PageContact } from './pages/page-contact';
+import { PageProjects } from './pages/page-projects';
+
 import { Scrollbars } from 'react-custom-scrollbars';
 import './media/scss/special/scrollbars.scss';
 import LightToggle from './components/special/light-toggle';

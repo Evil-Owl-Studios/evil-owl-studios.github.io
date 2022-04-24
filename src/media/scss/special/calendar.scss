@@ -1,0 +1,288 @@
+@use '../variables' as *;
+
+div.calendar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding: 5px;
+    width: 100%;
+    transition: width 0.2s, background-color $delay-light-toggle, color $delay-light-toggle;
+    background-color: $bg-light;
+
+    color: $fg-light;
+
+    & div.calendar-head{
+        display: flex;
+        flex-direction: row;
+        width: calc(35px * 7);
+        & span{
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+            &.calendar-month{
+                margin-right: 2px;
+                & select{
+                    border-radius: 4px;
+                    background-color: darken($bg-light, 10%);
+                    padding: 5px;
+                    color: white;
+                    cursor: pointer;
+                    & option{
+                        &[selected]{
+                            font-weight: bold;
+                            text-decoration: underline;
+                        }
+                    }
+                    &:hover{
+                        outline: solid 1px blue ;
+                    }
+                }
+            }
+            &.calendar-year{
+                margin-right: 2px;
+                & input[type="text"]{
+                    box-sizing: border-box;
+                    display: block;
+                    border-radius: 4px;
+                    padding: 5px;
+                    width: 100%;
+                    &:invalid{
+                        border: 1px solid red !important;
+                    }
+                }
+            }
+            &.calendar-reset{
+                & button{
+                    box-sizing: border-box;
+                    display: block;
+                    border-radius: 4px;
+                    background-color: darken($bg-light, 10%);
+                    padding: 5px;
+                    color: $fg-light;
+                    width: 100%;
+                    cursor: pointer;
+                    &:hover{
+                        outline: solid 1px blue ;
+                    }
+                }
+            }
+        }
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    & div.calendar-body{
+        display: flex;
+        flex-direction: column;
+        width: calc(35px * 7);
+
+        & div.calendar-weekdays{
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 3px;
+            & span.wd{
+                display: flex;
+                width: 100%;
+                max-width: 35px;
+                height: 30px;
+                text-align: center;
+                background-color: darken($bg-light, 10%);;
+                justify-content: center;
+                align-items: center;
+                &:first-child{
+                    border-top-left-radius: 4px;
+                    border-bottom-left-radius: 4px;
+                }
+                &:last-child{
+                    border-top-right-radius: 4px;
+                    border-bottom-right-radius: 4px;
+                }
+                &.wd-weekend{
+                    background-color: darken($bg-light, 15%);
+                }
+            }
+        }
+    
+        & div.calendar-dates{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            height: 100%;
+            border-radius: 4px;
+            overflow: hidden;
+            & span.date, & mark.date{
+                display: flex;
+                width: 100%;
+                max-width: 35px;
+                height: 30px;
+                text-align: center;
+                background-color: darken($bg-light, 5%);
+                justify-content: center;
+                align-items: center;
+                box-sizing: border-box;
+                &.date-weekend{
+                    background-color: darken($bg-light, 10%);
+                }
+                &.date-today{
+                    border: 1.5px solid darken($cal-hh-today-light, 10%);
+                    background-color: $cal-hh-today-light !important;
+                    border-radius: 3px;
+                }
+            }
+            & mark.date{
+                border: 1.5px solid darken($cal-hh-ev-pin-light, 10%);
+                background-color: $cal-hh-ev-pin-light !important;
+
+                &:first-of-type{
+                    border-top-left-radius: 3px;
+                    border-bottom-left-radius: 3px;
+                }
+                &:last-of-type{
+                    border-top-right-radius: 3px;
+                    border-bottom-right-radius: 3px;
+                }
+            }
+        }
+    }
+
+    & div.calendar-footer{
+        margin-top: 5px;
+        width: calc(35px * 7);
+
+        & div.calendar-events{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            & div.calendar-event{
+                position: relative;
+                width: 100%;
+                margin-bottom: 2px;
+
+                display: flex;
+                flex-direction: row;
+
+                border-radius: 4px;
+                overflow: hidden;
+
+                background-color: darken($bg-light, 5%);
+
+                & button{
+                    display: flex;
+
+                    align-items: center;
+                    justify-content: center;
+
+                    background-color: darken($bg-light, 10%);
+                    border: none;
+
+                    transition: background-color 0.2s;
+
+                    padding: 5px;
+                    
+                    cursor: pointer;
+                    
+                    &:hover{
+                        background-color: darken($bg-light, 15%);
+                        outline: 1px solid $a11y-blue;
+                        outline-offset: -1px;
+                    }
+
+                    & > svg{
+                        height: 20px;
+                        width: 20px;
+                    }
+                }
+                & div.calendar-event-info{
+                    display: block;
+                    width: 100%;
+                    & label{
+                        box-sizing: border-box;
+                        padding: 4px;
+                        display: block;
+                        overflow: hidden;
+                        width: 100%;
+                        background-color: darken($bg-light, 10%);
+                    }
+    
+                    &.with-description{
+                        & div.calendar-event-description{
+                            max-height: 0px;
+                            width: 100%;
+        
+                            transition: max-height 0.2s;
+        
+                            overflow: hidden;
+        
+                            & p{
+                                margin: 0px;
+                                padding: 5px;
+                            }
+                        }
+    
+                        & label{
+                            cursor: pointer;
+                            & + input[type='checkbox']{
+                                position: absolute;
+                                margin: 6px;
+    
+                                outline: none;
+                                appearance: none;
+    
+                                pointer-events: none;
+        
+                                top: 0px;
+                                right: 0px;
+                                
+                                height: 20px;
+                                width: 20px;
+        
+        
+                                &::after{
+                                    content: '';
+                                    display: block;
+                                    width: 100%;
+                                    height: 100%;
+                                    background-image: url('../../images/ico_chevron_down.svg');
+                                    background-size: 100% 100%;
+                                    background-position: center center;
+        
+                                    transform: rotateZ(-90deg);
+                                    transition: transform 0.2s;
+                                }
+                                
+                                &:checked{
+                                    & + div.calendar-event-description{
+                                        max-height: 100px;
+                                    }
+                                    &::after{
+                                        transform: rotateZ(0deg);
+                                    }
+                                }
+                            }
+                            &:hover{
+                                outline: 1px solid $a11y-blue;
+                                outline-offset: -1px;
+                                & + input[type='checkbox']{
+                                    &:not(:checked){
+                                        &::after{
+                                            transform: rotateZ(-45deg);
+                                        }
+                                    }
+                                }
+                            }
+                            &.ev-pinned{
+                                background-color: $cal-hh-ev-pin-light;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}
+
