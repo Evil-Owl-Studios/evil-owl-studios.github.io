@@ -1,6 +1,6 @@
 {
   "name": "evil-owl-studios",
-  "homepage": "https://evil-owl-studios.github.io/",
+  "homepage": "https://evil-owl-studios.github.io",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,7 +12,6 @@
     "@types/react": "^17.0.43",
     "@types/react-dom": "^17.0.14",
     "flubber": "^0.4.2",
-    "gh-pages": "^3.2.3",
     "react": "^17.0.2",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^17.0.2",
@@ -24,7 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b public -d build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -48,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-custom-scrollbars": "^4.0.10"
+    "@types/react-custom-scrollbars": "^4.0.10",
+    "gh-pages": "^3.2.3"
   }
 }
