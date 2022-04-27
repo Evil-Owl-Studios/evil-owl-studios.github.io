@@ -9,15 +9,27 @@ $a11y-blue: #0004ff;
 // Nav
 $nav-bg-dark: #252525;
 $nav-bg-light: #b0b0b0;
-$nav-accent-even-dark: #C79522;
-$nav-accent-even-light: #C79522;
-$nav-accent-odd-dark: #E1AA26;
-$nav-accent-odd-light: #E1AA26;
+
+$nav-accent-even-light: #393939;
+$nav-accent-even-dark: #393939;
+$nav-accent-odd-light: #2b2b2b;
+$nav-accent-odd-dark: #2b2b2b;
+
+$nav-accent-even-text-light: #dbdbdb;
+$nav-accent-even-text-dark: #dbdbdb;
+$nav-accent-odd-text-light: #dbdbdb;
+$nav-accent-odd-text-dark: #dbdbdb;
+
+$nav-select-light: #e1e1e1;
+$nav-select-dark: #1e1e1e;
+
 
 // Calendar
 $cal-hh-today-dark: #202472;
 $cal-hh-today-light: #949be9;
 $cal-hh-ev-pin-dark: #118231;
 $cal-hh-ev-pin-light: #56d574;
-
 $delay-light-toggle: 0.25s;
+
+$cal-event-main-dark: lighten($bg-dark, 5%);
+$cal-event-main-light: darken($bg-light, 5%);

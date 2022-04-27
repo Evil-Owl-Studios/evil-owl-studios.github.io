@@ -10,8 +10,13 @@
                 &.main{
                     & ul{
                         & li{
-                            & > a{
-                                color: $fg-light;
+                            &::before{
+                                background-color: $nav-select-light;
+                            }
+                            &:active, &:focus, &:focus-within, &.targeted{
+                                & > a{
+                                    color: $fg-light !important;
+                                }
                             }
                         }
                     }
@@ -19,9 +24,31 @@
             }
             &:nth-child(even){
                 background-color: $nav-accent-even-light;
+                & nav{
+                    &.main{
+                        & ul{
+                            & li{
+                                & > a{
+                                    color: $nav-accent-even-text-light;
+                                }
+                            }
+                        }
+                    }
+                }
             }
             &:nth-child(odd){
                 background-color: $nav-accent-odd-light;
+                & nav{
+                    &.main{
+                        & ul{
+                            & li{
+                                & > a{
+                                    color: $nav-accent-odd-text-light;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -108,6 +135,8 @@
                         background-color: darken($bg-light, 10%);
                         color: $fg-light;
                         border: 1px solid $bg-light;
+
+                        
                     }
                 }
             }
@@ -136,7 +165,44 @@
                 }
             }
         }
+
+        & div.calendar-footer{
+    
+            & div.calendar-events{
+    
+                & div.calendar-event{
+    
+                    background-color: $cal-event-main-light;
+    
+                    & button{    
+                        background-color: darken($cal-event-main-light, 5%);
+                        
+                        & > svg{
+                            & > g > path{
+                                fill: $fg-light !important;
+                            }
+                        }
+                        
+                        &:hover{
+                            background-color: darken($cal-event-main-light, 10%);
+                        }
+                    }
+                    & div.calendar-event-info{
+                        & label{
+                            background-color: darken($cal-event-main-light, 5%);
+                        }
+        
+                        &.with-description{
+                            & label{
+                                &.ev-pinned{
+                                    background-color: $cal-hh-ev-pin-light;
+                                }
+                            }
+                        }
+                    }
+    
+                }
+            }
+        }
     }
-
-
 }

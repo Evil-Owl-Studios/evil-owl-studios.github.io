@@ -5,7 +5,7 @@ export function PageHome(){
     return (<div className='page'>
                 <div className='page-body'>
                     <LandingPage>
-                            <HeadingCarrousel input={["Welcome to", "Croeso i", "Bienvenue à", "Willkommen bei", "Welkom bij", "Bienvenido a", "Ласкаво просимо до"]} />
+                            <HeadingCarrousel input={["Welcome to", "Croeso i"]} />
                             <p>Evil Owl Studios!</p>
                     </LandingPage>
                     <div className='page-main'>

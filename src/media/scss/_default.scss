@@ -89,7 +89,7 @@ div.nav{
                         right: 0px;
                         width: 0px;
                         height: 7px;
-                        background-color: #1e1e1e;
+                        background-color: $nav-select-light;
                         transition: width 0.2s ease-in-out 0s, height 0.2s ease-in-out 0.2s;
                     }
                     &:hover{
@@ -208,6 +208,9 @@ body{
     position: relative;
     margin: 0;
     box-sizing: border-box;
+    overflow: hidden;
+
+    transition: max-height 0.2s;
 
     &, & * {
         transition: color $delay-light-toggle, background-color $delay-light-toggle, box-shadow $delay-light-toggle;
@@ -221,5 +224,9 @@ body{
     }
     &.light{
         @import 'default_light';
+    }
+
+    @media screen and (max-height: 500px) {
+        max-height: calc(100vh - 50px);
     }
 }

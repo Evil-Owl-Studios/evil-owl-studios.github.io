@@ -52,7 +52,8 @@ export default class MainSite extends React.Component<IProps, IState>{
           autoHide
           autoHideDuration={200}
           autoHideTimeout={1000}
-          style={{width: "100%", height: "100vh"}}
+          className='scrollbar'
+          // style={{width: "100%", height: "100vh"}}
           renderView={props => <div {...props} className="scrollbar-view"/>}
           renderTrackVertical={props => <div {...props} className='scrollbar-track'/>}
           renderThumbVertical={props => <div {...props} className="scrollbar-thumb"/>}>

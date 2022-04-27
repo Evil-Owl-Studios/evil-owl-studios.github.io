@@ -1,5 +1,10 @@
 @use '../variables' as *;
 
+div.scrollbar{
+    width: 100% !important;
+    height: 100vh !important;
+}
+
 div.scrollbar-track{
     width: 10px;
     height: 100%;
@@ -12,5 +17,5 @@ div.scrollbar-thumb{
 div.scrollbar-view{
     padding-left: 10px;
     padding-right: 10px;
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
 }
