@@ -1,0 +1,123 @@
+&#projects{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    
+    & article{
+        width: 100%;
+        align-items: center;
+        & h2{
+            width: 300px;
+                min-width: 300px;
+            text-align: center;
+        }
+
+        display: flex;
+        justify-content: start;
+        flex-direction: row;
+        & div.project-hold{
+            
+            display: flex;
+            justify-content: start;
+            flex-direction: row;
+
+            max-width: 70%;
+            overflow-x: auto;
+            margin-right: 5px;
+        
+            & div.project{
+                display: flex;
+                justify-content: center;
+                margin: 2px;
+                & div.itch{
+                    display: flex;
+                    position: relative;
+                    flex-direction: column;
+                    width: 200px;
+                    height: 200px;
+                    background-color: $eos-not-quite-black;
+                    margin-bottom: 4px;
+                    overflow: hidden;
+                    border-radius: 4px;
+                    & img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                    & a.btn{
+                        align-self: flex-end;
+                        font-family: 'Staatliches', serif;
+                        display: block;
+                        width: 100%;
+                        text-align: center;
+                        padding: 4px;
+                        font-size: 18px;
+                        background-color: $eos-slightly-yellow;
+        
+                        z-index: 2;
+                        color: $eos-not-quite-black !important;
+                        &::after{
+                            display: none;
+                        }
+                    }
+                    & div.overlay{                
+                        position: absolute;
+        
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+        
+                        top: 100%;
+                        left: 0px;
+                        
+                        background-color: transparentize($color: $eos-not-quite-black, $amount: 0.5);
+        
+                        width: 100%;
+                        height: calc(100% - 30.4px);
+        
+                        transition: top 0.2s;
+        
+                        z-index: 1;
+        
+                        & p{
+                            display: block;
+                            color: $eos-not-quite-white;
+                            background-color: $eos-not-quite-black;
+                            max-width: 50%;
+                            text-align: center;
+                            width: 100%;
+                            padding: 2px;
+                            margin: 0px;
+                        }
+                    }
+        
+                    &:hover{
+                        & div.overlay{
+                            top: 0px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+
+    @media screen and (max-width: 600px) {
+        & article{
+            flex-direction: column;
+            align-items: center;
+            & h2{
+                width: 100%;
+            }
+            & div.project-hold{
+                max-width: unset;
+                overflow-x: unset;
+                justify-content: center;
+    
+                flex-wrap: wrap;
+            }
+        }
+    }
+}

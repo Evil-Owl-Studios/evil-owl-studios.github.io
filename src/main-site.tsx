@@ -27,7 +27,7 @@ export default class MainSite extends React.Component<IProps, IState>{
     super(props);
 
     this.state = {
-      darkMode: false,
+      darkMode: true,
       navHidden: true
     }
   }
@@ -58,10 +58,10 @@ export default class MainSite extends React.Component<IProps, IState>{
           renderTrackVertical={props => <div {...props} className='scrollbar-track'/>}
           renderThumbVertical={props => <div {...props} className="scrollbar-thumb"/>}>
           <PageHolder>
-            <Page pageId='home' pageHashes={["", "#home"]} pageContent={PageHome()} />
+            <Page pageId='home' pageHashes={["", "#home"]} pageContent={PageHome({isDarkMode: this.state.darkMode})} />
             <Page pageId='about' pageHashes={["#about"]} pageContent={PageAbout()} />
-            <Page pageId='projects' pageHashes={["#projects"]} pageContent={PageProjects()} />
-            <Page pageId='contact' pageHashes={["#contact"]} pageContent={PageContact()} />
+            <Page pageId='projects' pageHashes={["#projects"]} pageContent={PageProjects({isDarkMode: this.state.darkMode})} />
+            <Page pageId='contact' pageHashes={["#contact"]} pageContent={PageContact({isDarkMode: this.state.darkMode})} />
           </PageHolder>
         </Scrollbars>
       </div>

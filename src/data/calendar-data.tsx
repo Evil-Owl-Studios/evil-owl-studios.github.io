@@ -38,6 +38,46 @@ export default function calendarData(): ICalendarEvent[]{
                 month: EMonths.APRIL,
                 day: 17
             }
+        },
+        {
+            details: {
+                name: "GDC"
+            },
+            start: {
+                year: 2022,
+                month: EMonths.MARCH,
+                day: 21
+            },
+            end:{
+                year: 2022,
+                month: EMonths.MARCH,
+                day: 25
+            }
+        },
+        {
+            details: {
+                name: "Wales ComicCon: Homecoming"
+            },
+            start: {
+                year: 2022,
+                month: EMonths.AUGUST,
+                day: 21
+            }
+        },
+        {
+            details: {
+                name: "EGX"
+            },
+            start: {
+                year: 2022,
+                month: EMonths.SEPTEMBER,
+                day: 22
+            },
+            end: {
+                year: 2022,
+                month: EMonths.SEPTEMBER,
+                day: 25
+            }
         }
     ]
 }

@@ -9,7 +9,7 @@ interface IProps{
 
 interface IState{
     calendarDate: Date;
-    calendarYearInput: number;
+    calendarYearInput: string;
     calendarMonthInput: number;
 }
 
@@ -68,7 +68,7 @@ export class Calendar extends React.Component<IProps, IState>{
 
         this.state = {
             calendarDate: this.today,
-            calendarYearInput: this.today.getFullYear(),
+            calendarYearInput: this.today.getFullYear().toString(),
             calendarMonthInput: this.today.getMonth()
         }
     }
@@ -197,7 +197,7 @@ export class Calendar extends React.Component<IProps, IState>{
 
         let newDate = new Date(newYear, newMonth);
         
-        this.setState({calendarDate: newDate, calendarYearInput: newYear, calendarMonthInput: newMonth});
+        this.setState({calendarDate: newDate, calendarYearInput: newYear.toString(), calendarMonthInput: newMonth});
     }
 
     onChangeMonth(ev: React.ChangeEvent<HTMLSelectElement>){
@@ -218,10 +218,10 @@ export class Calendar extends React.Component<IProps, IState>{
         let val = ev.target.value;
         let yearRegex = /^[12][0-9]{3}$/;
         let yearNum = Number.parseInt(val);
-
-        if(!isNaN(yearNum)){
-            this.setState({calendarYearInput: yearNum});
-            
+        
+        this.setState({calendarYearInput: val});
+        
+        if(!isNaN(yearNum)) {
             if(yearRegex.exec(val)){
                 this.updateDate(undefined, yearNum);
             }
@@ -277,7 +277,7 @@ export class Calendar extends React.Component<IProps, IState>{
                             </select>
                         </span>
                         <span className='calendar-year'>
-                            <input maxLength={4} onChange={this.onChangeYear.bind(this)} pattern='^[12][0-9]{3}$' required type='text' value={`${this.state.calendarYearInput}`} />
+                            <input inputMode='decimal' maxLength={4} onChange={this.onChangeYear.bind(this)} pattern='^[12][0-9]{3}$' required type='text' value={`${this.state.calendarYearInput}`} />
                         </span>
                         <span className='calendar-reset'>
                             <button onClick={() => {this.resetCalendar()}}>Today</button>

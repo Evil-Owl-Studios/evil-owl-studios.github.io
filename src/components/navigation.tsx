@@ -48,7 +48,7 @@ export default class Navigation extends React.Component<IProps, IState>{
         return (
             <div className={`nav ${(this.props.hidden) ? 'hidden' : ''}`} aria-hidden={this.props.hidden}>
                 <div className='nav-col'>
-                    <p>Contact Us</p>
+                    {/* <p>Contact Us</p> */}
                 </div>
                 <div className='nav-col'>
                     <nav className='main'>

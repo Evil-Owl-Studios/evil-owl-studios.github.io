@@ -11,6 +11,10 @@ interface IState{
 
 }
 
+export interface PageMeta{
+    isDarkMode?: boolean;
+}
+
 export default class Page extends React.Component<IProps, IState>{
 
     constructor(props: IProps){
@@ -39,6 +43,7 @@ export default class Page extends React.Component<IProps, IState>{
                 </div>);
     }
 }
+
 
 // Pages
 

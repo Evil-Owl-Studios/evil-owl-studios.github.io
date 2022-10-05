@@ -155,10 +155,14 @@ div.pages-hold{
                     flex-direction: column;
 
                     align-items: center;
-                    justify-content: center;
-
-                    scroll-snap-align: start;
+                    justify-content: center;  
                     
+                    scroll-snap-align: end;
+
+                    @media screen and (max-width: 600px){
+                        scroll-snap-align: unset;
+                    }
+
                     & div.page-landing-body,
                     & div.page-landing-footer{
                         width: 100%;
@@ -167,6 +171,15 @@ div.pages-hold{
                         flex-direction: column;
                     }
 
+
+                    & div.eos-logo{
+                        width: 100%;
+                        text-align: center;
+                        & img{
+                            width: 50%;
+                            max-width: 400px;
+                        }
+                    }
 
                     & div.page-landing-body{
                         text-align: center;
@@ -189,11 +202,20 @@ div.pages-hold{
 
                     & div.page-main-body{
                         & section{
-                            scroll-snap-align: start;
+                            scroll-snap-align: start end;
+
+                            @media screen and (max-width: 600px){
+                                scroll-snap-align: unset;
+                            }
+
                             min-height: 100vh;
+
+                            @import './sections/projects';
+                            @import './sections/contact';
 
                             & h2{
                                 font-size: 50px;
+                                max-width: 400px;
                             }
                         }
                     }
@@ -226,7 +248,7 @@ body{
         @import 'default_light';
     }
 
-    @media screen and (max-height: 500px) {
-        max-height: calc(100vh - 50px);
+    @media screen and (max-height: 700px) {
+        max-height: calc(100vh - 60px);
     }
 }

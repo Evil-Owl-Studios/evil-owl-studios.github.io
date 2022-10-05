@@ -16,9 +16,6 @@ export function PageAbout(){
                                 <p>Started our journey at <a href="https://glyndwr.ac.uk/" target='_blank' rel="noreferrer">Wrexham Glyndŵr University</a>, <a href="https://en.wikipedia.org/wiki/North_Wales" target='_blank' rel="noreferrer">North Wales</a>; as graduate game students.</p>
                                 <p>We are a group of Masters Level Game Development graduates, formed in North Wales; with a passion to develop fun and detailed games for everyone.We also develop assets and programs as freelancing jobs</p>
                             </section>
-                            <section id='the-team'>
-                                <h2>Our Team</h2>
-                            </section>
                             <section id='events'>
                                 <h2>Planned Events</h2>
                                 <Calendar name="Events" events={calendarData()}/>
