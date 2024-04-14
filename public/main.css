@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro|Staatliches&display=swap");
+:root {
+  --bg-main: #f5f5f5;
+  --fg-main: #161616;
+  --bg-header: #f5f5f5;
+  --fg-header: #0e0e0e;
+  --bg-button: #141414;
+  --fg-button: #dddddd;
+  --focus-outline: #2626ff;
+  --focus-outline-inv: #ffff3f;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-main: #161616;
+    --fg-main: #f5f5f5;
+    --bg-header: #0e0e0e;
+    --fg-header: #f5f5f5;
+    --bg-button: #dddddd;
+    --fg-button: #141414;
+    --focus-outline: #ffff3f;
+    --focus-outline-inv: #2626ff;
+  }
+}
+*:focus {
+  outline: 2px solid var(--focus-outline);
+}
+
+body {
+  background-color: var(--bg-main);
+  margin: 0px;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+body header {
+  position: sticky;
+  top: 0px;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex-direction: column;
+  box-shadow: 0px 2px 5px 5px var(--bg-header);
+  background-color: var(--bg-header);
+  height: 50%;
+  transition: height 0.2s;
+}
+body header h1 {
+  font-size: 90px;
+  text-align: center;
+}
+body header:not(.home) {
+  flex-direction: row;
+  height: 100px;
+}
+body header:not(.home) h1 {
+  font-size: 40px;
+  width: 400px;
+}
+body header:not(.home) > nav {
+  width: 100%;
+}
+body header:not(.home) + main {
+  height: 100%;
+}
+body header:not(.home) + main > section {
+  padding-top: 10px;
+}
+@media screen and (max-width: 750px) {
+  body header:not(.home) {
+    flex-direction: column;
+  }
+}
+body header > nav {
+  background-color: var(--bg-header);
+  width: 75%;
+}
+body header > nav > ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+body header > nav > ul li {
+  display: block;
+  width: 50%;
+  margin-right: 2px;
+  margin-left: 2px;
+  min-width: 100px;
+}
+body header > nav > ul li a {
+  display: block;
+  padding: 6px;
+  box-sizing: border-box;
+  font-size: 20px;
+  color: var(--fg-button);
+  background-color: var(--bg-button);
+  text-align: center;
+}
+body header > nav > ul li a:focus, body header > nav > ul li a:hover {
+  background-color: var(--fg-button);
+  color: var(--bg-button);
+}
+@media screen and (max-width: 700px) and (max-height: 550px) {
+  body header h1 {
+    font-size: 40px;
+  }
+  body header > nav {
+    width: 100%;
+    overflow-x: auto;
+  }
+  body header > nav > ul li > a {
+    font-size: 16px;
+  }
+}
+
+h1, h2, h3 {
+  margin: 0px;
+  font-family: "Staatliches", cursive;
+  color: var(--fg-main);
+}
+
+main {
+  display: block;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  height: 50%;
+  box-sizing: content-box;
+}
+main section {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 10px;
+  scroll-snap-align: start;
+}
+main section[id] {
+  height: 100vh;
+}
+main section h1 {
+  text-align: center;
+  font-size: 40px;
+}
+main section * {
+  color: var(--fg-main);
+}
+main section p {
+  font-size: 18px;
+}
+
+button.to-top {
+  background-color: var(--bg-button);
+  color: var(--fg-button);
+  padding: 2px;
+  font-size: 17px;
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  width: 40px;
+  height: 40px;
+  display: block;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=main.css.map */
