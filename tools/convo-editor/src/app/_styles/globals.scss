@@ -1,0 +1,23 @@
+@import './variables';
+
+:root {
+  --main-foreground: #{$colour-fg-primary};
+  --main-background: #{$colour-bg-primary};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-foreground: #{$colour-bg-primary};
+    --main-background: #{$colour-fg-primary};
+  }
+}
+
+body {
+  color: var(--main-foreground);
+  background-color: var(--main-background);
+  margin: 0px;
+}
+
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}

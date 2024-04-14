@@ -1,0 +1,70 @@
+@import '../../app/_styles/variables';
+
+.group{
+    box-sizing: border-box;
+    &.toggle{
+        position: relative;
+        & input[type="checkbox"]{
+            position: absolute;
+            height: 0px;
+            width: 0px;
+            overflow: hidden;
+            appearance: none;
+            margin: 0px;
+            &+label:not([for~="rt-toggle"]){
+                position: relative;
+                display: block;
+                box-sizing: border-box;
+                width: 100%;
+                text-align: left;
+                padding: 4px;
+                background-color: $colour-bg-input;
+                color: $colour-fg-input;
+                font-size: 20px;
+                border: 1px solid black;
+                cursor: pointer;
+                &:hover{
+                    outline: solid $wcag-focus-colour;
+                }
+            }
+            &:checked{
+                &+label{
+                    background-color: $colour-bg-input-checked;
+                    &+div.group-hold{
+                        display: block;
+                    }
+                }
+            }
+            &:focus{
+                outline: none;
+                &+label{
+                    outline: solid $wcag-focus-colour;
+                }
+            }
+        }
+    }
+    &.editable{
+        & > h2{
+            margin-bottom: 4px;
+        }
+    }
+}
+
+.group-hold{
+    &.toggle{
+        display: none;
+        margin-left: 5px;
+        margin-right: 5px;
+        & > span.buttons{
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            & > *{
+                margin: 0px;
+            }
+        }
+    }
+    &.editable{
+        display: block;
+    }
+}
