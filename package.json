@@ -7,7 +7,8 @@
     "tsc": "tsc",
     "sass": "sass ./src/scss/main.scss ./public/main.css",
     "tsc-watch": "tsc --watch",
-    "sass-watch": "sass ./src/scss/main.scss:./public/main.css --watch"
+    "sass-watch": "sass ./src/scss/main.scss:./public/main.css --watch",
+    "publish": "git subtree push --prefix public origin gh-pages"
   },
   "author": "",
   "license": "ISC",
