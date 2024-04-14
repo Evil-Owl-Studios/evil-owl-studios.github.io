@@ -100,13 +100,13 @@ export default function EditorView({convoData, onEditorClose}: {convoData: Convo
             </EditorModal>
             <DefaultButton id="editor-close" label="Close Editor" onClick={() => {setClose(true)}}/>
             <GroupEditable<Convo.Speaker> id="speakers" separator label="Speakers" childId="speaker" childLabel="Speaker" dataPass={getLocalData()?.speakers || []} toClone={(identifier, index, data) => {
-                if(!data) throw Error("Missing data")
+                // if(!data) throw Error("Missing data")
                 return (<Speaker identifier={identifier} index={index} speaker={data} onModify={(modifiedSpeaker) => {
                     updateLocalSpeakerData(index, modifiedSpeaker);
                 }} />)
             }}/>
             <GroupEditable<Convo.Dialogue> id="convo" separator label="Conversation" childId="dialogue" childLabel="Dialogue" dataPass={getLocalData()?.conversation || []} toClone={(identifier, index, data) => {
-                if(!data) throw Error("Missing data")
+                // if(!data) throw Error("Missing data")
                 return (<Dialogue identifier={identifier} dialogue={data} convoData={localData} onModify={(modifiedDialogue) => {
                     updateLocalDialogueData(index, modifiedDialogue)
                 }}/>)
