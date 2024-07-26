@@ -1,42 +1,80 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evil Owl Studios Official Website</title>
+    <title>Evil Owl Studios</title>
     <link rel="stylesheet" href="./main.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header id="header" class="home">
-        <h1>Evil Owl Studios</h1>
+    <header>
+        <div class="logo">
+            <h1>Evil Owl Studios</h1>
+        </div>
         <nav>
             <ul>
-                <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Socials</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
-    <main id="main">
-        <section class="news">
-            <h1>Latest Updates</h1>
-            <article></article>
-        </section>
-        <section id="about">
-            <h1>About Us</h1>
-            <p>We are a group of Game Development Graduates, formed in North Wales</p>
-            <p>Our passion is in developing fun games, but we are also open to outsourcing our skill where needed.</p>
-            <p>We enjoy competing in the occasional Game Jam, Attending Game Expos, and we really enjoy communicating with our community.</p>
-            <p>We at Evil Owl Studios pride ourselves in achieving the best of what we're capable of doing, and returning great quality projects to our valued customers.</p>
-        </section>
-        <section id="projects">
-            <h1>Our Projects</h1>
-        </section>
-        <section id="contact">
-            <h1>Contact Us</h1>
-        </section>
-    </main>
-    <button id="to-top" class="to-top" aria-label="Back to Top">^</button>
-    <script src="./index.js"></script>
+
+    <section class="hero">
+        <h2>Welcome to <br/>Evil Owl Studios</h2>
+        <p>We're based in North Wales<br/>and<br/><strong>We make games!</strong></p>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>Our Projects</h2>
+        <div class="project-list">
+            <div class="project">
+                <h3>Junkship</h3>
+                <p>Top-Down Battle game to collect the Scrap Pieces and escape the junkyard.</p>
+                <ul class="tags">
+                    <li>Local Multiplayer</li>
+                    <li>3D</li>
+                    <li>PvP</li>
+                </ul>
+            </div>
+            <div class="project">
+                <h3>Balthazaar's Freedom</h3>
+                <p>Play as a Teddy Bear escaping a child!</p>
+                <ul class="tags">
+                    <li>Singleplayer</li>
+                    <li>3D</li>
+                </ul>
+            </div>
+            <div class="project">
+                <h3>Ser</h3>
+                <p>Play as a knight completing quests and combatting creatures around a mythological Wales</p>
+                <ul class="tags">
+                    <li>Singleplayer</li>
+                    <li>2D</li>
+                    <li>Adventure</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>
+            Follow us or Get in touch with us via our Socials
+        </p>
+        <div class="social-media">
+            <a href="https://instagram.com/EvilOwlStudios" target="_blank" rel="noreferrer noopener"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/EvilOwlStudios" target="_blank" rel="noreferrer noopener"><i class="fab fa-twitter"></i></a>
+            <a href="https://facebook.com/EvilOwlStudios" target="_blank" rel="noreferrer noopener"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://tiktok.com/EvilOwlStudios" target="_blank" rel="noreferrer noopener"><i class="fab fa-tiktok"></i></a>
+            <a href="https://youtube.com/@evilowlstudios6459" target="_blank" rel="noreferrer noopener"><i class="fab fa-youtube"></i></a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Evil Owl Studios. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
 </body>
 </html>

@@ -1,1 +1,0 @@
-:root{--main-foreground:#111;--main-background:#eee}@media(prefers-color-scheme:dark){:root{--main-foreground:#eee;--main-background:#111}}body{color:var(--main-foreground);background-color:var(--main-background);margin:0}*{font-family:Arial,Helvetica,sans-serif}
