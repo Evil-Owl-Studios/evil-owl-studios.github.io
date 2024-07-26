@@ -1,55 +1,37 @@
 export namespace Convo{
 
-    export interface ConvoData{
-        name: string;
-        data: Convo.Conversation;
+    export function Parse(inString: string): Convo{
+        const inJson = JSON.parse(inString);
+        let speakers: Speaker[] = (inJson["speakers"] as []).map((speaker) => {
+            return {
+                id: speaker["id"], 
+                displayName: speaker["displayName"]
+            }
+        });
+        let conversation: Dialogue[] = (inJson["conversation"] as []).map((dialogue) => {
+            return {
+                speaker: dialogue["speaker"],
+                isResponse: dialogue["isResponse"],
+                requireConditions: (dialogue["requireConditions"]) ? (dialogue["requireConditions"] as []).map((condition) => {
+                    return {id: condition["id"], value: condition["value"]} as Condition
+                }) : [],
+                lines: (dialogue["lines"]) ? (dialogue["lines"] as string[]) : [],
+                responses: (dialogue["responses"]) ? (dialogue["responses"] as []).map((response) => {
+                    return {
+                        line: response["line"],
+                        conditionsToSet: (response["conditionsToSet"]) ? (response["conditionsToSet"] as []).map((condition) => {
+                            return {id: condition["id"], value: condition["value"]} as Condition
+                        }) : []
+                    } as Response
+                }) : []
+            }
+        });
+        return {conversation, speakers};
     }
 
-    export function ParseDataToString(value: string, data: Convo.Conversation): string{
-        const CONVO_REGEX = /\${([\w\d\_\-\.]+)}/gm;
-        var m;
-    
-        var output = value;
-    
-        do{
-            m = CONVO_REGEX.exec(value);
-            if(m){
-                const parsed = m[1].split('.');
-                const cmd = parsed[0];
-                switch(cmd){
-                    case "speaker":
-                        let value = parsed[1];
-                        if(data.speakers){
-                            const speaker = Convo.FindSpeakerInConversation(data, value);
-                            output = output.replace(m[0], speaker?.displayName || "%INVALID%");
-                        }
-                }
-            }
-        } while (m);
-    
-        return output;
-    }
-
-    export function FindSpeakerInConversation(convoDat: Convo.Conversation, speakerId: string): Speaker | undefined{
-        var outSpeaker = undefined;
-        convoDat?.speakers.forEach((speaker) => {
-            if(speaker.id === speakerId){
-                outSpeaker = speaker;
-            }
-        })
-        return outSpeaker;
-    }
-    
-    export class Conversation{
-        public speakers: Speaker[] = [];
-        public conversation: Dialogue[] = [];
-
-        constructor(inData?: Conversation){
-            if(inData){
-                this.speakers = inData.speakers;
-                this.conversation = inData.conversation;
-            }
-        }
+    export interface Convo{
+        speakers: Speaker[];
+        conversation: Dialogue[];
     }
 
     export interface Speaker{
@@ -59,19 +41,20 @@ export namespace Convo{
 
     export interface Dialogue{
         speaker: string;
-        requireConditions: Condition[];
+        requireConditions: Condition[] | undefined;
         isResponse: boolean;
-        lines: string[];
-        responses: Response[];
+        lines: string[] | undefined;
+        responses: Response[] | undefined;
+    }
+
+    export interface Response{
+        conditionsToSet: Condition[] | undefined;
+        line: string;
     }
 
     export interface Condition{
         id: string;
-        value: string;
+        value: any;
     }
 
-    export interface Response{
-        conditionsToSet: Condition[];
-        line: string;
-    }
 }

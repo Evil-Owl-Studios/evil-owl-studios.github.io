@@ -1,26 +1,32 @@
 {
-  "name": "editor-convo",
-  "version": "0.1.0",
+  "name": "convo-editor",
+  "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "cross-env BUILDING=false next dev",
-    "build": "cross-env BUILDING=true next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "next": "14.1.4",
-    "react": "^18",
-    "react-dom": "^18"
+    "sass": "^1.77.8",
+    "vue": "^3.4.29"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "cross-env": "^7.0.3",
-    "eslint": "^8",
-    "eslint-config-next": "14.1.4",
-    "sass": "^1.72.0",
-    "typescript": "^5"
+    "@rushstack/eslint-patch": "^1.8.0",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.14.5",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "@vue/eslint-config-typescript": "^13.0.0",
+    "@vue/tsconfig": "^0.5.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "npm-run-all2": "^6.2.0",
+    "typescript": "~5.4.0",
+    "vite": "^5.3.1",
+    "vue-tsc": "^2.0.21"
   }
 }

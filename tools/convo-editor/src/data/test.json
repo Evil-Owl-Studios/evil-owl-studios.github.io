@@ -1,0 +1,156 @@
+{
+    "speakers": [
+        {
+            "id": "knight",
+            "displayName": "Heddwyn"
+        },
+        {
+            "id": "myrddin",
+            "displayName": "Myrddin"
+        },
+        {
+            "id": "dog",
+            "displayName": "Balthazaar"
+        },
+        {
+            "id": "cat",
+            "displayName": "Tomar"
+        }
+    ],
+    "conversation": [
+        {
+            "speaker": "myrddin",
+            "isResponse": false,
+            "lines": [
+                "You're unharmed!?",
+                "I mean, of course you're unharmed!",
+                "I saw it in a vision after all."
+            ]
+        },
+        {
+            "speaker": "knight",
+            "isResponse": true,
+            "responses": [
+                {
+                    "conditionsToSet": [],
+                    "line": "Good to see you too"
+                },
+                {
+                    "conditionsToSet": [],
+                    "line": "Of course you did"
+                }
+            ]
+        },
+        {
+            "speaker": "knight",
+            "isResponse": false,
+            "lines":[
+                "Are there many more of the creatures around?"
+            ]
+        },
+        {
+            "speaker": "myrddin",
+            "isResponse": false,
+            "lines":[
+                "Yes! I chased a few that way for you!"
+            ]
+        },
+        {
+            "speaker": "knight",
+            "isResponse": true,
+            "responses": [
+                {
+                    "conditionsToSet": [
+                        {
+                            "id": "response",
+                            "value": 1
+                        },
+                        {
+                            "id": "quest.first",
+                            "value": {}
+                        }
+                    ],
+                    "line": "You chased them did you?"
+                },
+                {
+                    "conditionsToSet": [
+                        {
+                            "id": "response",
+                            "value": 2
+                        },
+                        {
+                            "id": "quest.first",
+                            "value": {}
+                        }
+                    ],
+                    "line": "Excellent, let's go finish them off!"
+                }
+            ]
+        },
+        {
+            "speaker": "myrddin",
+            "isResponse": false,
+            "requireConditions": [{
+                "id": "response",
+                "value": 1
+            }],
+            "lines":[
+                "I did,",
+                "now it's time for you to prove yourself!"
+            ]
+        },
+        {
+            "speaker": "myrddin",
+            "isResponse": false,
+            "requireConditions": [{
+                "id": "response",
+                "value": 2
+            }],
+            "lines":[
+                "Oh I'd love to,",
+                "but my knees are aching now from the chasing.",
+                "I know!",
+                "I'll guard here for you."
+            ]
+        },
+        {
+            "speaker": "knight",
+            "isResponse": false,
+            "requireConditions": [{
+                "id": "response",
+                "value": 2
+            }],
+            "lines":[
+                "I suppose that makes sense..."
+            ]
+        },
+        {
+            "speaker": "knight",
+            "isResponse": false,
+            "requireConditions": [{
+                "id": "response",
+                "value": 1
+            }],
+            "lines":[
+                "Right, well try not to hurt yourself."
+            ]
+        },
+        {
+            "speaker": "myrddin",
+            "isResponse": false,
+            "lines":[
+                "Be careful, I saw the one that must be in charge when I was running aw-",
+                "towards them.",
+                "To chase them.",
+                "He definitely looks like a tough bakestone."
+            ]
+        },
+        {
+            "speaker": "knight",
+            "isResponse": false,
+            "lines":[
+                "I'll be careful, its reign of terror ends here!"
+            ]
+        }
+    ]
+}
