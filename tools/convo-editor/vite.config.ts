@@ -5,9 +5,10 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/tools/convo-editor/',
   build: {
     outDir: '../../public/tools/convo-editor',
-    emptyOutDir: true
+    emptyOutDir: true,
   },
   plugins: [
     vue(),
