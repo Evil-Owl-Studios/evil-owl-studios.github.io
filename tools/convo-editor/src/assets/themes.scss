@@ -1,0 +1,48 @@
+$colours: (
+  "red": #720000,
+  "yellow": #e4e400,
+  "green": #008500,
+  "blue": #000086
+);
+
+$bg-main: #1f1f1f;
+$fg-main: #f0f0f0;
+$ally-main: map-get($colours, 'yellow');
+
+$themes: (
+  dark: (
+    bg-main: #1f1f1f,
+    fg-main: #f0f0f0,
+    ally-main: #e4e400,
+    cl-red: #7a0909,
+    cl-yellow: #e4e400,
+    cl-green: #008500,
+    cl-blue: #000086
+  ),
+  light: (
+    bg-main: #f0f0f0,
+    fg-main: #1f1f1f,
+    ally-main: #000086,
+    cl-red: #ff7d7d,
+    cl-yellow: #e4e400,
+    cl-green: #008500,
+    cl-blue: #000086
+  ),
+  pinkish: (
+    bg-main: #f4bbff,
+    fg-main: #1f1f1f,
+    ally-main: #000022,
+  )
+);
+
+@mixin themify($themes){
+  @each $name, $values in $themes{
+    &[data-theme="#{$name}"] {
+      $theme-map: $values !global;
+      @content;
+    }
+  }
+}
+@function themed($key){
+  @return map-get($theme-map, $key);
+}

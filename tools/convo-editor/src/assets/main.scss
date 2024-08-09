@@ -12,20 +12,3 @@ button, .button{
         background-color: darken($fg-main, 10px);
     }
 }
-
-div.input{
-    & label{
-        min-width: 150px;
-    }
-    & input, & textarea{
-        box-sizing: border-box;
-        width: 100%;
-        font-size: 16px;
-    }
-    & textarea{
-        resize: vertical;
-        min-height: 75px;
-        max-height: 135px;
-        overflow-y: auto;
-    }
-}

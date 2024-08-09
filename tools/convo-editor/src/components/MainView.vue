@@ -1,14 +1,21 @@
 <script setup lang="ts">
-    import type { Convo } from '@/lib/convo';
+    import { Convo } from '@/lib/convo';
     
     import Conversation from './Conversation.vue';
     import Speakers from './Speakers.vue';
 
     import Group from './Group.vue';
-    import { ref } from 'vue';
+    import { getIcon } from '@/lib/icons';
+    import { inject, ref } from 'vue';
+    import { convoDataKey, updateConvoDataKey } from '@/lib/keys';
+    import { Utils } from '@/lib/utils';
 
-    const props = defineProps<{convoName?: string, convoData: Convo.Convo, speakerView: boolean}>();
+    const props = defineProps<{speakerView: boolean}>();
     const emit = defineEmits(['on-save']);
+
+    const convoData = Utils.injectStrict(convoDataKey);
+    const updateConvoData = Utils.injectStrict(updateConvoDataKey);
+
 </script>
 
 <template>
@@ -17,12 +24,17 @@
             <h2>Conversation</h2>
         </template>
         <template #default>
-            <Group v-for="(dialogue, index) in props.convoData.conversation" :is-toggle="true" :title="`[${index}] ${dialogue.speaker}`" :id="`dialogue ${index}`">
-                <Conversation :dialogue="dialogue" :index="index" :speaker-list="props.convoData.speakers" :key="new Date().getTime() + index"/>
+            <Group v-for="(dialogue, index) in convoData.conversation" :is-toggle="true" :title="`[${index}] ${dialogue.speaker}`" :id="`dialogue ${index}`">
+                <template #edit>
+                    <li title="Delete" class="ico delete" @click="convoData.conversation.splice(index, 1)"></li>
+                    <li v-if="(index) > 0" title="Shift Up" @click="[convoData.conversation[index], convoData.conversation[index - 1]] = [convoData.conversation[index - 1], convoData.conversation[index]]"></li>
+                    <li v-if="(index) < (convoData.conversation.length - 1)" title="Shift Down" @click="[convoData.conversation[index], convoData.conversation[index + 1]] = [convoData.conversation[index + 1], convoData.conversation[index]]"></li>
+                </template>
+                <Conversation :index="index" :key="new Date().getTime() + index"/>
             </Group>
         </template>
         <template #foot>
-            <button @click="props.convoData.conversation.push({speaker: '', isResponse: false, requireConditions: [], lines: [], responses: []})">Add Convo</button>
+            <button @click="convoData.conversation.push({speaker: '', isResponse: false, requireConditions: [], lines: [], responses: []})">Add Convo</button>
         </template>
     </Group>
     <Group v-else>
@@ -30,17 +42,21 @@
             <h2>Speakers</h2>
         </template>
         <template #default>
-            <Group v-for="(speaker, index) in props.convoData.speakers" :id="`speaker ${index}`">
-                <Speakers :index="index" :speaker="speaker" :key="speaker.id" />
+            <Group v-for="(speaker, index) in convoData.speakers" :id="`speaker ${index}`">
+                <template #edit>
+                    <li title="Delete" class="ico delete" @click="convoData.speakers.splice(index, 1)"></li>
+                    <li v-if="(index) > 0" title="Shift Up" class="ico move-up" @click="[convoData.speakers[index], convoData.speakers[index - 1]] = [convoData.speakers[index - 1], convoData.speakers[index]]"></li>
+                    <li v-if="(index) < (convoData.speakers.length - 1)" class="ico move-down" title="Shift Down" @click="[convoData.speakers[index], convoData.speakers[index + 1]] = [convoData.speakers[index + 1], convoData.speakers[index]]"></li>
+                </template>
+                <Speakers :index="index" :key="speaker.id" />
             </Group>
         </template>
         <template #foot>
-            <button @click="props.convoData.speakers.push({id: '', displayName: ''})">Add Speaker</button>
+            <button @click="convoData.speakers.push({id: '', displayName: ''})">Add Speaker</button>
         </template>
     </Group>
 </template>
   
-<style scoped lang="scss">
+<style lang="scss">
     @import url('../assets/main.scss');
-
 </style>

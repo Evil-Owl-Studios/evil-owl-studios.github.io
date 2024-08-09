@@ -1,6 +1,9 @@
 import './assets/main.scss'
 
-import { createApp } from 'vue'
+import { createApp, provide, ref } from 'vue'
 import App from './App.vue'
+import type { Convo } from './lib/convo';
+import { Utils } from './lib/utils';
 
-createApp(App).mount('#app')
+const app = createApp(App);
+app.mount('#app');

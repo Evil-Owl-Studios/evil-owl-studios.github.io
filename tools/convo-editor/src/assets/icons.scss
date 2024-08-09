@@ -10,4 +10,27 @@ $icons: (
     "delete": '#{$iconPath}/ico_delete.svg',
     "up": '#{$iconPath}/ico_up.svg',
     "down": '#{$iconPath}/ico_down.svg',
-)
+);
+
+.ico, .icon{
+    &::after{
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        height: 100%;
+        width: 100%;
+
+        mask-repeat: no-repeat;
+        mask-position: center;
+        background-position: center;
+    }
+    @each $id, $icon in $icons{
+        &.#{$id} {
+            &::after{
+                mask-image: url($icon);
+            }
+        }
+    }
+}

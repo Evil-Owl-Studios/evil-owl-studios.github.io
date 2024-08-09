@@ -13,6 +13,9 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
+  define:{
+    APP_VERSION: JSON.stringify(process.env.npm_package_version)
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
@@ -22,6 +25,7 @@ export default defineConfig({
     preprocessorOptions:{
       scss: {
         additionalData: `
+          @import '@/assets/themes.scss';
           @import '@/assets/global.scss';
           $iconPath: "@/assets/img";
           @import '@/assets/icons.scss';

@@ -1,28 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
-$bg-main: #1f1f1f;
-$fg-main: #f0f0f0;
-
-$colours: (
-  "red": #720000,
-  "yellow": #e4e400,
-  "green": #008500,
-  "blue": #000086
-);
-
 *{
   font-family: "Noto Sans", sans-serif;
   font-style: normal;
 }
 
 body{
-  background-color: $bg-main;
-  color: $fg-main;
   margin: 0px;
-  // overflow: hidden;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  @include themify($themes){
+    & {
+      background-color: themed("bg-main");
+      color: themed("fg-main");
+    }
+  };
+}
+
+div#app{
+  height: 100vh;
 }
 
 h1, h2, h3, h4{
   padding: 0px;
   margin: 0px;
+}
+
+@keyframes fadeShow {
+    0%{
+      opacity: 0;
+    }
+
+    99%{
+      opacity: 1;
+    }
+
+    100%{
+      opacity: 1;
+      display: unset;
+    }
 }

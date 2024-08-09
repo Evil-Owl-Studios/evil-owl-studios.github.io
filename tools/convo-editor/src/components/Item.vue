@@ -1,4 +1,6 @@
-<script setup lang="ts">    
+<script setup lang="ts">
+import { ref } from 'vue';
+    const showEditPanel = ref<boolean>(false);
 </script>
 
 <template>
@@ -17,5 +19,7 @@
         flex-direction: column;
 
         padding-top: 4px;
+
+        position: relative;
     }
 </style>

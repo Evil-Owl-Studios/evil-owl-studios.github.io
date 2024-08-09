@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { ref } from 'vue';    
+    import { provide, ref } from 'vue';    
     import type { Convo } from '@/lib/convo';
 
     const props = defineProps<{convoName?: string, convoData?: Convo.Convo}>();

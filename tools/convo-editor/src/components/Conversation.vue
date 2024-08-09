@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { computed, ref, watch } from 'vue';    
+    import { computed, inject, ref, watch } from 'vue';    
     import type { Convo } from '@/lib/convo';
     import { Utils } from '@/lib/utils';
 
@@ -8,8 +8,15 @@
     import Input from './Input.vue';
     
     import SpeakerSelect from './SpeakerSelect.vue';
+    import Condition from './Condition.vue';
+    import { getIcon } from '@/lib/icons';
+    import { convoDataKey } from '@/lib/keys';
+import Response from './Response.vue';
 
-    const props = defineProps<{dialogue: Convo.Dialogue, index: number, speakerList: Convo.Speaker[]}>();
+    const props = defineProps<{index: number}>();
+
+    const dialogue = Utils.injectStrict(convoDataKey).value.conversation[props.index];
+    const speakerList = Utils.injectStrict(convoDataKey).value.speakers;
 </script>
 
 <template>
@@ -17,22 +24,18 @@
         <Item>
             <Input>
                 <label>Speaker</label>
-                <SpeakerSelect :id="`dialogue ${index} speaker`" :label="`dialogue ${index} speaker`" :speakers="props.speakerList" :defaultValue="dialogue.speaker" @on-change="(speaker) => dialogue.speaker = speaker"/>
+                <SpeakerSelect :id="`dialogue ${index} speaker`" :label="`dialogue ${index} speaker`" :speakers="speakerList" :defaultValue="dialogue.speaker" @on-change="(speaker) => dialogue.speaker = speaker"/>
             </Input>
         </Item>
         <Group :isToggle="true" :id="`dialogue ${index} conditions`" title="Required Conditions" :stickyFoot="true">
-            <template #default>
-                <Item v-for="(condition, cIndex) in dialogue.requireConditions" v-if="dialogue.requireConditions">
-                    <Input>
-                        <label :for="`dialogue ${index} condition ${cIndex} id`">ID</label>
-                        <input type="text" :name="`dialogue ${index} condition ${cIndex} id`" :id="`dialogue ${index} condition ${cIndex} id`" v-model="dialogue.requireConditions[cIndex].id">
-                    </Input>
-                    <Input>
-                        <label :for="`dialogue ${index} condition ${cIndex} value`">Value</label>
-                        <input type="text" :name="`dialogue ${index} condition ${cIndex} value`" :id="`dialogue ${index} condition ${cIndex} value`" v-model="dialogue.requireConditions[cIndex].value">
-                    </Input>
-                </Item>
-            </template>
+            <Group v-for="(condition, cIndex) in dialogue.requireConditions" v-if="dialogue.requireConditions">
+                <template #edit>
+                    <li title="Delete" @click="dialogue.requireConditions.splice(cIndex, 1)"></li>
+                    <li v-if="(cIndex) > 0" title="Shift Up" @click="[dialogue.requireConditions[cIndex], dialogue.requireConditions[cIndex - 1]] = [dialogue.requireConditions[cIndex - 1], dialogue.requireConditions[cIndex]]"></li>
+                    <li v-if="(cIndex) < (dialogue.requireConditions.length - 1)" title="Shift Down" @click="[dialogue.requireConditions[cIndex], dialogue.requireConditions[cIndex + 1]] = [dialogue.requireConditions[cIndex + 1], dialogue.requireConditions[cIndex]]"></li>
+                </template>
+                <Condition :condition="condition" :id="`dialogue ${index} condition ${cIndex}`" :key="new Date().getTime() + cIndex"/>
+            </Group>
             <template #foot>
                 <button @click="dialogue.requireConditions?.push({id: '', value: ''})">Add</button>
             </template>
@@ -48,31 +51,14 @@
             </Input>
         </Item>
         <Group v-if="dialogue.isResponse" :isToggle="true" title="Responses" :id="`dialogue ${index} responses`" :stickyFoot="true">
-            <template  #default>
-                <Item v-for="(response, rIndex) in dialogue.responses" v-if="dialogue.responses">
-                    <Input>
-                        <label :for="`dialogue ${index} response ${rIndex} line`">Line</label>
-                        <input type="text" :name="`dialogue ${index} response ${rIndex} line`" :id="`dialogue ${index} response ${rIndex} line`" v-model="dialogue.responses[rIndex].line">
-                    </Input>
-                    <Group :isToggle="true" title="Conditions to Set" :id="`dialogue ${index} response ${rIndex} conditions`">
-                        <template #default>
-                            <Item v-for="(condition, cIndex) in response.conditionsToSet" v-if="response.conditionsToSet">
-                                <Input>
-                                    <label :for="`dialogue ${index} response ${rIndex} condition ${cIndex} id`">ID</label>
-                                    <input type="text" :name="`dialogue ${index} response ${rIndex} condition ${cIndex} id`" :id="`dialogue ${index} response ${rIndex} condition ${cIndex} id`" v-model="response.conditionsToSet[cIndex].id">
-                                </Input>
-                                <Input>
-                                    <label :for="`dialogue ${index} response ${rIndex} condition ${cIndex} value`">Value</label>
-                                    <input type="text" :name="`dialogue ${index} response ${rIndex} condition ${cIndex} value`" :id="`dialogue ${index} response ${rIndex} condition ${cIndex} value`" v-model="response.conditionsToSet[cIndex].value">
-                                </Input>
-                            </Item>
-                        </template>
-                        <template #foot>
-                            <button @click="response.conditionsToSet?.push({id: '', value: ''})">Add</button>
-                        </template>
-                    </Group>
-                </Item>
-            </template>
+            <Group v-for="(response, rIndex) in dialogue.responses" v-if="dialogue.responses">
+                <template #edit>
+                    <li title="Delete" @click="dialogue.responses.splice(rIndex, 1)"></li>
+                    <li v-if="(rIndex) > 0" title="Shift Up" @click="[dialogue.responses[rIndex], dialogue.responses[rIndex - 1]] = [dialogue.responses[rIndex - 1], dialogue.responses[rIndex]]"></li>
+                    <li v-if="(rIndex) < (dialogue.responses.length - 1)" title="Shift Down" @click="[dialogue.responses[rIndex], dialogue.responses[rIndex + 1]] = [dialogue.responses[rIndex + 1], dialogue.responses[rIndex]]"></li>
+                </template>
+                <Response :id="`dialogue ${index} response ${rIndex}`" :response="response"/>
+            </Group>
             <template #foot>
                 <button @click="dialogue.responses?.push({conditionsToSet: [], line: ''})">Add</button>
             </template>
